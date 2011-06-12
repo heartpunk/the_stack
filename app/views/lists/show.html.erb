@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @list.name %>
+  <br />
+  <%= link_to 'Add an item', :controller => :items, :action => :new, :list_id => @list.id %>
+  <% if @list.items.empty? -%>
+    <p>You have no items, why don't you <%= link_to 'create one', :controller => :items, :action => :new, :list_id => @list.id %>? Or, you could go to the kitchen and make a jam sandwich.</p>
+  <% else -%>
+    <ol>
+      <% @list.items.each do |item| -%>
+        <li><%= item.text %></li>
+      <% end -%>
+    </ol>
+  <% end -%>
+</p>
+
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>
