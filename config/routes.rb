@@ -1,6 +1,10 @@
 TheStack::Application.routes.draw do
 
-  resources :items, :users, :lists
+  resources :users
+
+  resources :lists do
+    resources :items
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

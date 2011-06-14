@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   # GET /items.xml
   def index
     @items = Item.all
+    @list = List.find params[:list_id]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,22 +11,11 @@ class ItemsController < ApplicationController
     end
   end
 
-  # GET /items/1
-  # GET /items/1.xml
-  def show
-    @item = Item.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @item }
-    end
-  end
-
   # GET /items/new
   # GET /items/new.xml
   def new
     @item = Item.new
-    @list = List.find params[:list_id].to_i 
+    @list = List.find params[:list_id]
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @item }
@@ -34,6 +24,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    @list = List.find params[:list_id]
     @item = Item.find(params[:id])
   end
 
@@ -77,7 +68,7 @@ class ItemsController < ApplicationController
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to(items_url) }
+      format.html { redirect_to(list_items_url) }
       format.xml  { head :ok }
     end
   end

@@ -4,9 +4,9 @@
   <b>Name:</b>
   <%= @list.name %>
   <br />
-  <%= link_to 'Add an item', :controller => :items, :action => :new, :list_id => @list.id %>
+  <%= link_to 'Add an item', new_list_item_path(@list) %>
   <% if @list.items.empty? -%>
-    <p>You have no items, why don't you <%= link_to 'create one', :controller => :items, :action => :new, :list_id => @list.id %>? Or, you could go to the kitchen and make a jam sandwich.</p>
+    <p>You have no items, why don't you <%= link_to 'create one', new_list_item_path(@list) %>? Or, you could go to the kitchen and make a jam sandwich.</p>
   <% else -%>
     <ol>
       <% @list.items.each do |item| -%>

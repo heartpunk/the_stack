@@ -1,4 +1,4 @@
-<%= form_for(@item) do |f| %>
+<%= form_for(@item, :url => new_list_item_url(@list)) do |f| %>
   <%= hidden_field_tag :list_id, @list.id %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
