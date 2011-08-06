@@ -10,6 +10,24 @@ class UsersController < ApplicationController
     end
   end
 
+  # POST /login
+  def login
+    unless user = User.find_by_email(params[:email])
+      redirect_to root_url, :notice => User::EMAIL_UNREGISTERED
+      return
+    end
+    if user.authenticate(params[:password]) #TODO Normalization
+      session[:id] = user.id
+      unless user.lists.empty?
+        redirect_to list_items_url(user.lists.first), :notice => "Your berry harvest was successful. Let's make jam."
+      else
+        redirect_to new_list_url, :notice => "Please make a list."
+      end
+    else
+      redirect_to root_url, :notice => User::PASSWORD_INVALID
+    end
+  end
+
   # GET /users/1
   # GET /users/1.xml
   def show

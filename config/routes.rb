@@ -1,7 +1,9 @@
 TheStack::Application.routes.draw do
 
-  resources :users
-
+  root :to => "default#index"
+  match '/login' => 'users#login', :as => 'login'
+  
+  resources :users # REVIEW This could be more RESTful by creating more permalink URLs. 
   resources :lists do
     resources :items
   end

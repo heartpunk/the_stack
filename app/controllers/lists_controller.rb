@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   # GET /lists
   # GET /lists.xml
-  def index
+  def index # TODO require authentication
     @lists = List.all
 
     respond_to do |format|
@@ -12,7 +12,7 @@ class ListsController < ApplicationController
 
   # GET /lists/1
   # GET /lists/1.xml
-  def show
+  def show # TODO require authentication
     @list = List.find(params[:id])
 
     respond_to do |format|
@@ -23,7 +23,7 @@ class ListsController < ApplicationController
 
   # GET /lists/new
   # GET /lists/new.xml
-  def new
+  def new # TODO require authentication
     @list = List.new
 
     respond_to do |format|
@@ -33,7 +33,7 @@ class ListsController < ApplicationController
   end
 
   # GET /lists/1/edit
-  def edit
+  def edit # TODO require authentication
     @list = List.find(params[:id])
   end
 
@@ -41,10 +41,15 @@ class ListsController < ApplicationController
   # POST /lists.xml
   def create
     @list = List.new(params[:list])
+    if user = User.find(session[:id])
+      @list.users << user
+    else
+      raise 'wtf'
+    end
 
     respond_to do |format|
       if @list.save
-        format.html { redirect_to(@list, :notice => 'List was successfully created.') }
+        format.html { redirect_to(list_items_url(@list), :notice => 'List was successfully created.') }
         format.xml  { render :xml => @list, :status => :created, :location => @list }
       else
         format.html { render :action => "new" }
@@ -55,7 +60,7 @@ class ListsController < ApplicationController
 
   # PUT /lists/1
   # PUT /lists/1.xml
-  def update
+  def update # TODO require authentication
     @list = List.find(params[:id])
 
     respond_to do |format|
@@ -71,7 +76,7 @@ class ListsController < ApplicationController
 
   # DELETE /lists/1
   # DELETE /lists/1.xml
-  def destroy
+  def destroy # TODO require authentication
     @list = List.find(params[:id])
     @list.destroy
 

@@ -2,8 +2,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.xml
   def index
-    @items = Item.all
-    @list = List.find params[:list_id]
+    @list = List.find(params[:list_id], :include => :items)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -36,7 +35,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to(:controller => :lists, :action => :show, :id => params[:list_id]) } #TODO pickup here. Error.
+        format.html { redirect_to list_items_url(params[:list_id]) }
         format.xml  { render :xml => @item, :status => :created, :location => @item }
       else
         format.html { render :action => "new" }
@@ -68,7 +67,7 @@ class ItemsController < ApplicationController
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to(list_items_url) }
+      format.html { redirect_to(list_items_url) } #REVIEW wtf?  how does this work?
       format.xml  { head :ok }
     end
   end

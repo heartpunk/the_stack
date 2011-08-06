@@ -1,0 +1,7 @@
+<h1>Jam Sandwiches!</h1>
+<p>What kind do you want?</p>
+<%= form_for(:user, :url => login_url) do %>
+  <%= text_field_tag :email %><br />
+  <%= password_field_tag :password %><br />
+  <%= submit_tag "jam!" %>
+<% end %>

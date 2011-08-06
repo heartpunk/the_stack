@@ -1,4 +1,4 @@
-<h1>Listing items</h1>
+<h1>Listing items for: <%= @list.name %></h1>
 
 <table>
   <tr>
@@ -8,7 +8,7 @@
     <th></th>
   </tr>
 
-<% @items.each do |item| %>
+<% @list.items.each do |item| %>
   <tr>
     <td><%= item.text %></td>
     <td><%= link_to 'Edit', edit_list_item_path(@list, item) %></td>
