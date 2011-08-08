@@ -1,3 +1,7 @@
 #flash {
   border: 1px solid red;
 }
+
+#list_name {
+  font: 20pt courier;
+}
