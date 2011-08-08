@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to list_items_url(params[:list_id]) }
+        format.html { redirect_to list_url(params[:list_id]) }
         format.xml  { render :xml => @item, :status => :created, :location => @item }
       else
         format.html { render :action => "new" }

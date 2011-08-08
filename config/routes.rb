@@ -4,7 +4,7 @@ TheStack::Application.routes.draw do
   match '/login' => 'users#login', :as => 'login'
   
   resources :users # REVIEW This could be more RESTful by creating more permalink URLs. 
-  resources :lists do
+  resources :lists do # TODO these routes are too general and we don't use all of them.  needs to change.
     resources :items
   end
 
