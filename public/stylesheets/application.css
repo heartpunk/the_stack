@@ -1,7 +1,32 @@
 #flash {
-  border: 1px solid red;
+  font-size:14pt;
+  font-style:italic;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom:5px;
+  width:50%;
+  background:#f0f0f0;
+  border: 1px solid #b0b0b0;
+  padding:5px;
 }
 
-#list_name {
-  font: 20pt courier;
+* {font-family: 'Josefin Sans', sans-serif; font-size:12pt; color:#404040;} // REVIEW
+
+a {color:#808080;}
+a:hover {background-color:#b0b0b0;}
+
+h1 {
+  font-size:34pt;
+  font-weight:700;
+  margin:0;
+  margin-bottom:5px;
+}
+
+ul.list {
+  list-style-type:none;
+  padding-left:5px;
+}
+
+ul.list li span.content {
+  margin-right:5px;
 }

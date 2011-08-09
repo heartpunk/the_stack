@@ -1,7 +1,16 @@
-<h1>Jam Sandwiches!</h1>
-<p>What kind do you want?</p>
+<h1>Welcome to the Stack.</h1>
+<p>Lorem ipsum... jam?</p>
 <%= form_for(:user, :url => login_url) do %>
-  <%= text_field_tag :email %><br />
-  <%= password_field_tag :password %><br />
-  <%= submit_tag "jam!" %>
+  <!-- TODO DESIGN should not be table. -->
+  <table>
+    <tr>
+      <td><%= label_tag :email, "Email" %></td>
+      <td><%= text_field_tag :email %></td>
+    </tr>
+    <tr>
+      <td><%= label_tag :password, "Password" %></td>
+      <td><%= password_field_tag :password %></td>
+    </tr>
+  </table><br />
+  <%= submit_tag "Login" %> | <%= link_to "New?  Click here to get started.", new_user_path %>
 <% end %>

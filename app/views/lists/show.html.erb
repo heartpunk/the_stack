@@ -1,23 +1,18 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <div id="list_name"><%= @list.name %></div>
-  <%= link_to 'Add an item', new_list_item_path(@list) %>
-  <% if @list.items.empty? -%>
-    <p>You have no items, why don't you <%= link_to 'create one', new_list_item_path(@list) %>? Or, you could go to the kitchen and make a jam sandwich.</p>
-  <% else -%>
-    <ul>
-      <% @list.items.each do |item| -%>
-        <li>
-          <%= item.text %>
-          <%= link_to 'Edit', edit_list_item_path(@list, item) %>
-          <%= link_to 'Destroy', list_item_path(@list, item), :confirm => 'Are you sure?', :method => :delete %>
-        </li>
-      <% end -%>
-    </ul>
-  <% end -%>
-</p>
-
-
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+<h1>
+  <%= @list.name %>
+  <span style="font:10pt courier;">&nbsp;(<%= link_to 'edit', edit_list_path(@list) %>)</span>
+</h1>
+<%= link_to 'Add an item', new_list_item_path(@list) %> | <%= link_to 'Show all lists', lists_path %>
+<% if @list.items.empty? -%>
+  <p>You have no items, why don't you <%= link_to 'create one', new_list_item_path(@list) %>? Or, you could go to the kitchen and make a jam sandwich.</p>
+<% else -%>
+  <ul class="list">
+    <% @list.items.each do |item| -%>
+      <li>
+        <span class="content"><%= item.text %></span>
+        (<%= link_to 'Edit', edit_list_item_path(@list, item) %> |
+          <%= link_to 'Destroy', list_item_path(@list, item), :confirm => 'Are you sure?', :method => :delete %>)
+      </li>
+    <% end -%>
+  </ul>
+<% end -%>
