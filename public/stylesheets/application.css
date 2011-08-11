@@ -1,5 +1,5 @@
-#flash {
-  font-size:14pt;
+.flash {
+  font-size:12pt;
   font-style:italic;
   margin-left:auto;
   margin-right:auto;
@@ -10,13 +10,17 @@
   padding:5px;
 }
 
-* {font-family: 'Josefin Sans', sans-serif; font-size:12pt; color:#404040;} // REVIEW
+.flash.error {
+  color:red;
+}
+
+* {font-family: 'Anonymous Pro', sans-serif; font-size:10pt; color:#404040;} // REVIEW
 
 a {color:#808080;}
 a:hover {background-color:#b0b0b0;}
 
 h1 {
-  font-size:34pt;
+  font-size:30pt;
   font-weight:700;
   margin:0;
   margin-bottom:5px;
@@ -29,4 +33,8 @@ ul.list {
 
 ul.list li span.content {
   margin-right:5px;
+}
+
+ul.list li {
+  padding-bottom:5px;
 }
