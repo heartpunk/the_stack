@@ -1,3 +1,5 @@
-<%= link_to 'New List', new_list_path %><!-- DESIGN where should this go? -->
+<div id="general_actions">
+  <%= link_to 'Make another List', new_list_path, :style => "font-size:16pt;" %><!-- DESIGN where should this go? -->
+</div>
 
 <%= render :partial => "list", :collection => @lists %>
