@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     if user.authenticate(params[:password]) #TODO Normalization
       session[:id] = user.id
       unless user.lists.empty?
-        redirect_to list_url(user.lists.first), :notice => "Your berry harvest was successful. Let's make jam."
+        redirect_to lists_url, :notice => "Your berry harvest was successful. Let's make jam."
       else
         redirect_to new_list_url, :notice => "Please make a list."
       end

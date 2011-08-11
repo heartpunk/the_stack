@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to list_url(params[:list_id]) }
+        format.html { redirect_to lists_url }
         format.xml  { render :xml => @item, :status => :created, :location => @item }
       else
         format.html { render :action => "new" }
@@ -51,7 +51,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.update_attributes(params[:item])
-        format.html { redirect_to(list_url(@item.list_id), :notice => 'Item was successfully updated.') }
+        format.html { redirect_to(lists_url, :notice => 'Item was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -67,7 +67,7 @@ class ItemsController < ApplicationController
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to(list_url) } #REVIEW wtf?  how does this work?
+      format.html { redirect_to(lists_url) } #REVIEW wtf?  how does this work?
       format.xml  { head :ok }
     end
   end

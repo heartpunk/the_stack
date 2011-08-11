@@ -2,7 +2,8 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.xml
   def index # TODO require authentication
-    @lists = List.all
+    @user = User.find session[:id], :include => {:lists => [:items]}
+    @lists = @user.lists.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,12 +45,12 @@ class ListsController < ApplicationController
     if user = User.find(session[:id])
       @list.users << user
     else
-      raise 'wtf'
+      raise 'wtf' # TODO
     end
 
     respond_to do |format|
       if @list.save
-        format.html { redirect_to(list_url(@list), :notice => 'List was successfully created.') }
+        format.html { redirect_to(lists_url, :notice => 'List was successfully created.') }
         format.xml  { render :xml => @list, :status => :created, :location => @list }
       else
         format.html { render :action => "new" }
