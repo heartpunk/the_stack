@@ -1,0 +1,17 @@
+<h1>Share a list</h1>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prevented this list from being shared:</h2>
+
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for(@user, :url => share_list_path(@list)) do |f| %>
+  <%= f.label :email, "Email" %>
+  <%= f.text_field :email %><br />
+  <%= f.submit %>
+<% end %>

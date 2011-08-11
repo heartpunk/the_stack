@@ -6,6 +6,10 @@ TheStack::Application.routes.draw do
   resources :users # REVIEW This could be more RESTful by creating more permalink URLs. 
   resources :lists do # TODO these routes are too general and we don't use all of them.  needs to change.
     resources :items
+    member do
+      get 'share', :to => "lists#share_form"
+      post 'share', :to => "lists#share"
+    end
   end
 
   # The priority is based upon order of creation:
