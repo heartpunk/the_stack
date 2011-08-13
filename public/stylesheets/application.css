@@ -14,7 +14,7 @@
   color:red;
 }
 
-* {font-family: 'Anonymous Pro', sans-serif; font-size:10pt; color:#404040;} // REVIEW
+body {font-family: 'Anonymous Pro', sans-serif; font-size:10pt; color:#404040;} // REVIEW
 
 a {color:#808080;}
 a:hover {background-color:#b0b0b0;}
