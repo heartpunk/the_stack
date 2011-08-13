@@ -2,6 +2,7 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.xml
   def index # TODO require authentication
+    session[:came_from] = :index
     @user = User.find session[:id], :include => {:lists => [:items]}
     @lists = @user.lists.all
 
@@ -14,6 +15,7 @@ class ListsController < ApplicationController
   # GET /lists/1
   # GET /lists/1.xml
   def show # TODO require authentication
+    session[:came_from] = :show
     @list = List.find(params[:id])
 
     respond_to do |format|
@@ -66,7 +68,7 @@ class ListsController < ApplicationController
 
     respond_to do |format|
       if @list.update_attributes(params[:list])
-        format.html { redirect_to(@list, :notice => 'List was successfully updated.') }
+        format.html { redirect_to(redirect_url, :notice => 'List was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
