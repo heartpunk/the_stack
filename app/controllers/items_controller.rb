@@ -32,6 +32,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(params[:item])
     @item.list_id = params[:list_id]
+    @list = List.find(params[:list_id])
 
     respond_to do |format|
       if @item.save
