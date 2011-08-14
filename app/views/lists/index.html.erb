@@ -1,5 +1,3 @@
-<div id="general_actions">
-  <%= link_to 'Make another list', new_list_path, :style => "font-size:16pt;" %>
-</div>
+<%= render :partial => "general_actions" %>
 
 <%= render :partial => "list", :collection => @lists %>

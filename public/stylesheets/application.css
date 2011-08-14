@@ -35,8 +35,11 @@ h1 {
   margin-bottom:5px;
 }
 
-ul.list {
+ul {
   list-style-type:none;
+}
+
+ul.list {
   padding-left:5px;
 }
 

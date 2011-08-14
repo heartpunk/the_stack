@@ -2,6 +2,7 @@ TheStack::Application.routes.draw do
 
   root :to => "default#index"
   match '/login' => 'users#login', :as => 'login'
+  match '/logout' => 'users#logout', :as => 'logout'
   
   resources :users # REVIEW This could be more RESTful by creating more permalink URLs. 
   resources :lists do # TODO these routes are too general and we don't use all of them.  needs to change.

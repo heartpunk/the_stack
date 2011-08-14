@@ -17,6 +17,7 @@ class UsersController < ApplicationController
       return
     end
     if user.authenticate(params[:password]) #TODO Normalization
+      reset_session
       session[:id] = user.id
       unless user.lists.empty?
         redirect_to lists_url, :notice => "Your berry harvest was successful. Let's make jam."
@@ -26,6 +27,11 @@ class UsersController < ApplicationController
     else
       redirect_to root_url, :notice => User::PASSWORD_INVALID
     end
+  end
+
+  def logout
+    reset_session
+    redirect_to root_url
   end
 
   # GET /users/1
