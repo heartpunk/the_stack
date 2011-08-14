@@ -2,7 +2,7 @@
   <%= link_to list.name, list_url(list) %>
   <span class="list_actions">&nbsp;(<%= link_to 'edit', edit_list_path(list) %>)</span>
 </h1>
-<%= link_to 'Add an item', new_list_item_path(list) %> | <%= link_to "Share this list", share_list_path(list) %> | <%= link_to 'Show all lists', lists_path %>
+<%= link_to 'Add an item', new_list_item_path(list) %> | <%= link_to "Share this list", share_list_path(list) %><%= raw(action_name != 'index' ? (' | ' + (link_to 'Show all lists', lists_path)) : '') %>
 <% if list.items.empty? -%>
   <p>You have no items, why don't you <%= link_to 'create one', new_list_item_path(list) %>? Or, you could go to the kitchen and make a jam sandwich.</p>
 <% else -%>
