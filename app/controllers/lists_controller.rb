@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  before_filter :is_logged_in?
   # GET /lists
   # GET /lists.xml
   def index # TODO require authentication
